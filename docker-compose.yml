@@ -1,17 +1,13 @@
-version: "3.9"
-
 services:
   backend:
-    build: ./backend
-    container_name: fastapi_backend
+    image: ${BACKEND_IMAGE}
     ports:
       - "5001:5000"
     networks:
       - app-network
 
   frontend:
-    build: ./frontend
-    container_name: nginx_frontend
+    image: ${FRONTEND_IMAGE}
     ports:
       - "8083:80"
     depends_on:
@@ -22,3 +18,32 @@ services:
 networks:
   app-network:
     driver: bridge
+
+
+
+
+
+#version: "3.9"
+
+#services:
+ # backend:
+  #  image: ./backend
+   # container_name: fastapi_backend
+    #ports:
+     # - "5001:5000"
+#    networks:
+ #    - app-network
+#
+ # frontend:
+  #  build: ./frontend
+   # container_name: nginx_frontend
+    #ports:
+     # - "8083:80"
+    #depends_on:
+     # - backend
+    #networks:
+     # - app-network
+
+#networks:
+ # app-network:
+  #  driver: bridge
