@@ -43,10 +43,10 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, EmailStr
 from pymongo import MongoClient
 
-app = FastAPI(
-	docs_url="api/docs",
-	openapi_url="/api/openapi.json"
-)
+app = FastAPI( 
+    docs_url="/api/docs",
+    redoc_url=None,
+    openapi_url="/api/openapi.json")
 
 app.add_middleware(
     CORSMiddleware,
@@ -56,7 +56,7 @@ app.add_middleware(
 )
 
 # MongoDB connection
-client = MongoClient("mongodb://localhost:27017")
+client = MongoClient("mongodb://mongo:27017")
 db = client["login_app"]
 collection = db["login_data"]
 

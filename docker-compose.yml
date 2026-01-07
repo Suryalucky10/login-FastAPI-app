@@ -21,7 +21,7 @@
 
 services:
   backend:
-    image: suryalucky/login-fastapi-backend:12
+    image: ${BACKEND_IMAGE}
     container_name: dockerhub_backend
     expose:
       - "5000"
@@ -47,6 +47,13 @@ services:
     depends_on:
       - backend
       - frontend
+    networks:
+      - app-network
+  mongo:
+    image: mongo:6
+    container_name: mongo
+    ports:
+      - "27017:27017"
     networks:
       - app-network
 
